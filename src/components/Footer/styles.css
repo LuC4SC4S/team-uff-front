@@ -1,0 +1,35 @@
+
+footer {
+    background-color: #EEFFF7;
+    color: black;
+    line-height: 1.5;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.ft-legal {
+    padding: 0.9375rem 1.875rem;
+}
+
+.ft-legal-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ft-legal-list li {
+    margin: 0.125rem 0.625rem;
+    white-space: nowrap;
+}
+
+/* one before the last child */
+.ft-legal-list li:nth-last-child(1) {
+    flex: 1;       /* same as flex-grow: 1; */
+}

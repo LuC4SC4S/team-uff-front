@@ -1,0 +1,136 @@
+#page-create {
+    height: 100vh;
+}
+
+#page-create form {
+    margin: 50px auto;
+    padding: 80px;
+    padding-top: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+#page-create form #pseudo-form {
+    display: flex;
+    flex-direction: row;
+}
+
+#page-create form #form-main {
+    flex: 1;
+}
+
+#page-create form #form-main:first-child {
+    margin-right: 30px;
+}
+
+#page-create form h3 {
+    font-size: 30px;
+    width: 700px;
+    text-align: center;
+}
+
+#page-create form fieldset {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 20px 20px;
+    border-radius: 8px;
+    border: 0;
+    width: 700px;
+
+
+    font-size: 25px;
+}
+
+#page-create form .field {
+    flex: 1;
+  
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+#page-create form .field input[type=text],
+#page-create form .field input[type=range],
+#page-create form .field textarea{
+    flex: 1;
+    background: #F0F0F5;
+    border-radius: 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6C6C80;
+    resize: none;
+}
+
+#page-create form fieldset legend {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+#page-create button {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    display: block;
+    width: 400px;
+
+    background: #167943;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0;
+}
+
+#page-create form button:hover {
+    opacity: 0.9;
+}
+
+@media screen and ( max-width : 500px) {
+
+    #page-create form {
+        margin: 50px auto;
+        padding: 20px;
+        padding-top: 0;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+    #page-create form #pseudo-form {
+        flex-direction: column;
+        margin: auto;
+    }
+    #page-create form h3 {
+        font-size: 25px;
+        width: 300px;
+        text-align: center;
+    }
+    #page-create form fieldset {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        padding: 20px 20px;
+        background: #E5E5E5;
+        border-radius: 8px;
+        border: 0;
+        width: 300px;
+    
+    
+        font-size: 20px;
+    }
+    #page-create button {
+        width: 100%;
+        height: 40px;
+        margin-top: 20px;
+        display: block;
+        width: 200px;
+    
+        background: #167943;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 5px;
+        border: 0;
+    }
+}
