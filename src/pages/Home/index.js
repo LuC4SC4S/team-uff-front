@@ -22,9 +22,9 @@ function Home() {
         };
 
         try {
-            //const response = await api.post('cadastro', data);
+            const response = await api.post('cadastro', data);
 
-            alert(`Cliente ${name} cadastrado com sucesso!`);
+            alert("Cliente cadastrado com sucesso!" + response);
             history.push('/')
         }catch (err){
             alert(err);
