@@ -15,6 +15,7 @@ function Home() {
     const [estado, setEstado] = useState('');
     const [telefone, setTelefone] = useState('');
     const [email, setEmail] = useState('');
+
     const [descricao, setDescricao] = useState('');
     const [tipo, setTipo] = useState('');
     const [peso, setPeso] = useState(0);
@@ -43,7 +44,7 @@ function Home() {
             )
         },
     });
-    
+
     const baseStyle = {
         flex: 1,
         display: 'flex',
@@ -77,11 +78,7 @@ function Home() {
         ...(isDragActive ? activeStyle : {}),
         ...(isDragAccept ? acceptStyle : {}),
         ...(isDragReject ? rejectStyle : {})
-      }),[
-        isDragActive,
-        isDragReject,
-        isDragAccept
-      ]);
+    }), []);
     
 
     async function HandleSubmit(e){
