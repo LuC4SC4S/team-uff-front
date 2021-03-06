@@ -3,6 +3,22 @@ footer {
     background-color: #EEFFF7;
     color: black;
     line-height: 1.5;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+@media screen and ( max-width : 500px) {
+
+    footer {
+        background-color: #EEFFF7;
+        color: black;
+        line-height: 1.5;
+        position: sticky;
+        width: 100%;
+    }
 }
 
 footer a {

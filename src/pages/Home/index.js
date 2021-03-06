@@ -1,14 +1,15 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
 import { useDropzone } from "react-dropzone"
+import styled from 'styled-components';
 
-import api from '../../services/api';
+//import api from '../../services/api';
 import './styles.css';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
-function Home() {
+function Home(props) {
     const [nome, setNome] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [cidade, setCidade] = useState('');
@@ -22,7 +23,7 @@ function Home() {
     const [volume, setVolume] = useState(0);
     const [valor_frete, setValor_Frete] = useState(0);
     
-    const [files, setFiles] = useState([])
+    const [files, setFiles] = useState([]);
     
 
     const history = useHistory();
@@ -32,7 +33,8 @@ function Home() {
         getInputProps,
         isDragActive,
         isDragAccept,
-        isDragReject } = useDropzone({
+        isDragReject
+        } = useDropzone({
         accept: "image/*",
         onDrop: (acceptedFiles) => {
           setFiles(
@@ -45,40 +47,34 @@ function Home() {
         },
     });
 
-    const baseStyle = {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px',
-        borderWidth: 2,
-        borderRadius: 2,
-        borderColor: 'black',
-        borderStyle: 'dashed',
-        backgroundColor: '#EEFFF7',
-        color: '#black',
-        outline: 'none',
-        transition: 'border .24s ease-in-out'
-    };
-
-    const activeStyle = {
-        borderColor: '#2196f3'
-      };
+    const getColor = (props) => {
+        if (props.isDragAccept) {
+            return '#00e676';
+        }
+        if (props.isDragReject) {
+            return '#ff1744';
+        }
+        if (props.isDragActive) {
+            return '#2196f3';
+        }
+        return '#eeeeee';
+    }
       
-      const acceptStyle = {
-        borderColor: '#00e676'
-      };
-      
-      const rejectStyle = {
-        borderColor: '#ff1744'
-      };
-
-    const style = useMemo(() => ({
-        ...baseStyle,
-        ...(isDragActive ? activeStyle : {}),
-        ...(isDragAccept ? acceptStyle : {}),
-        ...(isDragReject ? rejectStyle : {})
-    }), []);
+    const Container = styled.div`
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-width: 2px;
+        border-radius: 2px;
+        border-color: ${props => getColor(props)};
+        border-style: dashed;
+        background-color: #fafafa;
+        color: #bdbdbd;
+        outline: none;
+        transition: border .24s ease-in-out;
+    `;
     
 
     async function HandleSubmit(e){
@@ -87,13 +83,22 @@ function Home() {
         const data = {
             nome,
             cnpj,
+            cidade,
+            estado,
+            telefone,
+            email,
+            descricao,
+            tipo,
+            peso,
+            volume,
+            valor_frete,
+            files
         };
 
         try {
-            const response = await api.post('cadastro', data);
-
-            alert("Cliente cadastrado com sucesso!" + response);
-            history.push('/')
+            //const response = await api.post('', data);
+            localStorage.setItem("Dados", JSON.stringify(data));
+            history.push('/response')
         }catch (err){
             alert(err);
         };
@@ -219,20 +224,21 @@ function Home() {
                                     onChange = {e => setValor_Frete(e.target.value)}
                                 />
                             </div>
-                            <div className="field" {...getRootProps({style})}>
-                                <label htmlFor="files">Fotos do Lote</label>
-                                <input 
-                                    {...getInputProps()} 
-                                    name="files"
-                                    id="files"
-                                    value={files}
-                                    className="field-files"
-                                    onChange = {e => setCnpj(e.target.value)}
-                                />{
-                                    isDragActive ?
-                                        <p>Jogue as Fotos Aqui</p> :
-                                        <p>Arraste algumas fotos aqui ou clique para selecionar</p>
-                                }
+                            <div className="container">
+                                <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
+                                    <label htmlFor="files">Fotos do Lote</label>
+                                    <input
+                                        {...getInputProps()} 
+                                        name="files"
+                                        id="files"
+                                        value={files}
+                                        onChange = {e => setFiles(e.target.value)}
+                                    />{
+                                        isDragActive ?
+                                            <p>Jogue as Fotos Aqui</p> :
+                                            <p>Arraste algumas fotos aqui.</p>
+                                    }
+                                </Container>
                             </div>
                             
                         </fieldset>

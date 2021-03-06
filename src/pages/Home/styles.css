@@ -3,7 +3,8 @@
 }
 
 #page-create form {
-    margin: 50px auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
     padding: 80px;
     padding-top: 0;
     display: grid;
@@ -88,7 +89,8 @@
 @media screen and ( max-width : 500px) {
 
     #page-create form {
-        margin: 50px auto;
+        margin-top: 50px;
+        margin-bottom: 0px;
         padding: 20px;
         padding-top: 0;
         width: 100%;
