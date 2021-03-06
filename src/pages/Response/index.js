@@ -7,10 +7,6 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
 const Response = () => {
-    let data = localStorage.getItem("Dados");
-    data = JSON.parse(data);
-
-
     return(
         <div>
             <Header/>
