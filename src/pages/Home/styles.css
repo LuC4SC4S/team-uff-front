@@ -20,10 +20,6 @@
     flex: 1;
 }
 
-#page-create form #form-main:first-child {
-    margin-right: 30px;
-}
-
 #page-create form h3 {
     font-size: 30px;
     width: 700px;
@@ -51,7 +47,7 @@
 }
 
 #page-create form .field input[type=text],
-#page-create form .field input[type=range],
+#page-create form .field input[type=number],
 #page-create form .field textarea{
     flex: 1;
     background: #F0F0F5;
@@ -95,30 +91,27 @@
         margin: 50px auto;
         padding: 20px;
         padding-top: 0;
-        display: grid;
-        align-items: center;
-        justify-items: center;
+        width: 100%;
     }
     #page-create form #pseudo-form {
         flex-direction: column;
         margin: auto;
+        width: 100%;
     }
     #page-create form h3 {
-        font-size: 25px;
-        width: 300px;
+        font-size: 15px;
+        width: 100%;
         text-align: center;
     }
     #page-create form fieldset {
         margin-top: 30px;
         margin-bottom: 10px;
         padding: 20px 20px;
-        background: #E5E5E5;
         border-radius: 8px;
         border: 0;
-        width: 300px;
+        width: 100%;
     
-    
-        font-size: 20px;
+        font-size: 15px;
     }
     #page-create button {
         width: 100%;
@@ -129,7 +122,7 @@
     
         background: #167943;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 15px;
         border-radius: 5px;
         border: 0;
     }
